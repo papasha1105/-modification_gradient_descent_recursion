@@ -9,7 +9,7 @@ alpha = 0.5; eps =0.01
 #  Исходная функция
 
 def f(x, y):
-   #return (4.3 * pow(x, 2)) - (6.4 * x * y) + (3.1 * pow(y, 2)) + (8.9 * x) - 12.89 * y + 12.6
+   # Тут задаём наши функции
    return ((np.sin(x - 1) + y - 0.1) ** 2) + ((x - np.sin(y + 1) - 0.8) ** 2)
 
 
@@ -31,7 +31,7 @@ def cond(x, y, x0, y0, alpha):
 
 x0 = 0;  y0 = 0
 
-
+#  Здесь вычисляем градиент
 
 d_x = 2 * x0 + 2 * (y0 + np.sin(x0 - 1) - 0.1) * np.cos(x0 - 1) - 2 * np.sin(y0 + 1) - 1.6
 d_y = 2 * y0 - 2 * (x0 - np.sin(y0 + 1) - 0.8) * np.cos(y0 + 1) + 2 * np.sin(x0 - 1) - 0.2
@@ -41,6 +41,8 @@ for i in range(100):
 
     if d_x == 0 or d_y ==0 : break
 
+         #  Нормируем градиент
+         
     g_1 = d_x * (pow(d_x, 2) + pow(d_y, 2)) ** (-0.5)
     g_2 = d_y * (pow(d_x, 2) + pow(d_y, 2)) ** (-0.5)
 
@@ -123,3 +125,5 @@ point = ax.scatter(min_x, min_y, f(min_x, min_y), c='red', s=50, label = 'Най
 plt.plot(X_m, Y_m, F_m, '-*g', label = 'Направление минимизации')
 plt.legend()
 plt.show()
+
+
